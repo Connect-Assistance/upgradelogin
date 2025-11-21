@@ -14,9 +14,10 @@
             box-sizing: border-box;
         }
 
+        /* CAMBIO CLAVE: Nuevo fondo azul claro */
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
+            background-color: #f0f6ff; /* Color de fondo claro para que coincida con la imagen */
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -30,15 +31,32 @@
             align-items: center;
             max-width: 1200px;
             width: 100%;
-            min-height: 600px;
+            min-height: 800px; /* Aumentado para mejor visualización */
         }
 
+        /* CAMBIO CLAVE: Activamos la sección izquierda para el arte */
         .left-section {
-            display: none;
+            flex: 1;
+            display: flex;
+            justify-content: flex-end; /* Alineación a la derecha */
+            align-items: center;
+            padding-right: 50px;
+        }
+
+        .illustration-container {
+            position: relative;
+            width: 450px;
+            height: 450px;
+        }
+        
+        /* Ajuste visual para la ilustración (simulación) */
+        .illustration-container svg {
+            max-width: 100%;
+            height: auto;
         }
 
         .right-section {
-            max-width: 500px;
+            max-width: 450px;
             width: 100%;
             background: white;
             border-radius: 24px;
@@ -47,6 +65,7 @@
             flex-direction: column;
             position: relative;
             overflow: hidden;
+            margin-left: 50px; /* Separación de la ilustración */
         }
 
         .header-card {
@@ -122,62 +141,69 @@
             font-weight: 600;
         }
 
+        /* Estilo del botón de Google para que se parezca más a la imagen */
         .google-btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 12px;
-            padding: 14px 32px;
+            padding: 10px 24px; /* Un poco más pequeño */
             background: white;
-            border: 2px solid #e5e7eb;
+            border: 1px solid #e5e7eb; /* Borde más fino */
             border-radius: 50px;
-            font-size: 16px;
-            font-weight: 500;
+            font-size: 14px; /* Fuente un poco más pequeña */
+            font-weight: 600;
             color: #1f2937;
             cursor: pointer;
             transition: all 0.3s ease;
             text-decoration: none;
             margin: 0 auto;
+            max-width: 250px; /* Límite de ancho para que se centre bien */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Sombra sutil */
         }
 
         .google-btn:hover {
             border-color: #d1d5db;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            transform: translateY(-2px);
+            transform: translateY(-1px);
         }
 
         .google-icon {
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
         }
 
-        .footer {
-            padding: 30px 40px;
+        /* El footer se mueve al nivel del body para quedar abajo a la izquierda */
+        .footer-fixed {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            border-top: 1px solid #f3f4f6;
+            gap: 20px;
+            z-index: 10;
         }
 
         .flags {
             display: flex;
-            gap: 12px;
+            gap: 8px;
         }
 
         .flag {
-            width: 32px;
-            height: 32px;
+            width: 28px;
+            height: 28px;
             border-radius: 50%;
             overflow: hidden;
             cursor: pointer;
             transition: transform 0.2s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
         .flag:hover {
             transform: scale(1.1);
         }
 
-        .flag img {
+        .flag svg {
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -185,24 +211,57 @@
 
         .version {
             font-size: 11px;
-            color: #9ca3af;
+            color: #5d6d7e; /* Un gris azulado para que coincida */
         }
+        
+        /* Botón de ayuda flotante (el signo de interrogación) */
+        .help-float {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            width: 50px;
+            height: 50px;
+            background-color: #ff6b47;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 24px;
+            font-weight: 700;
+            box-shadow: 0 5px 15px rgba(255, 107, 71, 0.4);
+            cursor: pointer;
+        }
+
 
         @media (max-width: 968px) {
             .container {
                 flex-direction: column;
+                min-height: auto;
             }
 
             .left-section {
-                display: none;
+                display: none; /* Ocultamos la ilustración en móvil */
             }
 
             .right-section {
-                min-height: auto;
+                margin-left: 0;
+            }
+            
+            .footer-fixed {
+                position: static;
+                margin-top: 30px;
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .help-float {
+                bottom: 20px;
+                right: 20px;
             }
         }
 
-        /* Trap/Warning Page Styles */
+        /* Estilos de la página de advertencia (Trap Page) - Mantenidos igual */
         .trap-page {
             display: none;
             position: fixed;
@@ -222,12 +281,8 @@
         }
 
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .trap-content {
@@ -239,14 +294,8 @@
         }
 
         @keyframes slideUp {
-            from {
-                transform: translateY(30px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
 
         .warning-icon {
@@ -257,12 +306,8 @@
         }
 
         @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
-            }
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
 
         .trap-content h1 {
@@ -334,9 +379,46 @@
 <body>
     <div class="container">
         <div class="left-section">
-            <!-- Espacio para contenido adicional si lo necesitas -->
+            <div class="illustration-container">
+                <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" style="opacity: 0.8;">
+                    <style>
+                        .line { stroke: #333; stroke-width: 2; fill: none; }
+                        .fill { fill: #333; }
+                        .light-fill { fill: #fff; }
+                        .outline { stroke: #333; stroke-width: 2; fill: #f0f6ff; }
+                        .accent { fill: #ff6b47; }
+                    </style>
+                    <circle cx="100" cy="100" r="40" class="outline" stroke="#ccc"/>
+                    <path d="M80 80 L120 80 L120 120 L80 120 Z" class="line"/>
+                    <path d="M110 80 Q120 90 120 100 Q120 110 110 120" class="line"/>
+                    <line x1="100" y1="145" x2="100" y2="160" stroke="#4285F4" stroke-width="3"/>
+                    <circle cx="100" cy="165" r="5" fill="#4285F4"/>
+                    
+                    <circle cx="100" cy="400" r="40" class="outline" stroke="#ccc"/>
+                    <path d="M85 390 L115 390 Q115 400 100 410 Q85 400 85 390 Z" class="line"/>
+                    <rect x="95" y="410" width="10" height="10" class="fill"/>
+                    <path d="M98 375 L102 375 L102 385 L98 385 Z" fill="#FFC107"/>
+                    
+                    <circle cx="420" cy="100" r="40" class="outline" stroke="#ccc"/>
+                    <path d="M390 90 A10 10 0 1 1 400 90 L400 110 L430 110" class="line"/>
+                    <rect x="430" y="100" width="10" height="10" class="fill"/>
+                    <rect x="440" y="100" width="5" height="2" class="fill"/>
+                    
+                    <circle cx="420" cy="400" r="40" class="outline" stroke="#ccc"/>
+                    <rect x="390" y="380" width="60" height="40" class="line"/>
+                    <line x1="420" y1="380" x2="420" y2="420" class="line"/>
+                    <line x1="390" y1="400" x2="450" y2="400" class="line"/>
+                    
+                    <path d="M250 150 C270 120, 300 120, 320 150 L320 280 L350 350 L220 350 L250 280 Z" stroke="#333" stroke-width="2" fill="#fff"/>
+                    <circle cx="285" cy="140" r="30" class="line"/>
+                    <path d="M275 140 C280 135, 290 135, 295 140" class="fill"/>
+                    <path d="M285 350 L285 450" class="line"/>
+                    <path d="M285 350 L350 420" class="line"/>
+                    <path d="M350 250 L300 200 C300 180, 270 180, 270 200 Z" class="line"/>
+                </svg>
+            </div>
         </div>
-        
+
         <div class="right-section">
             <div class="header-card">
                 <div class="logo-icon"></div>
@@ -361,62 +443,66 @@
                     Sign in with Google
                 </button>
             </div>
-
-            <div class="footer">
-                <div class="flags">
-                    <div class="flag">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 55.2 38.4">
-                            <path fill="#B22234" d="M0 0h55.2v38.4H0z"/>
-                            <path d="M0 2.95h55.2m0 5.9H0m0 5.9h55.2m0 5.9H0m0 5.9h55.2m0 5.9H0m0 5.9h55.2" stroke="#FFF" stroke-width="2.95"/>
-                            <path fill="#3C3B6E" d="M0 0h22.08v21.52H0z"/>
-                        </svg>
-                    </div>
-                    <div class="flag">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600">
-                            <rect width="900" height="600" fill="#CE1126"/>
-                            <rect y="200" width="900" height="200" fill="#002B7F"/>
-                            <rect y="400" width="900" height="200" fill="#FFF"/>
-                        </svg>
-                    </div>
-                    <div class="flag">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600">
-                            <rect width="900" height="600" fill="#FCD116"/>
-                            <rect y="200" width="900" height="200" fill="#003893"/>
-                            <rect y="400" width="900" height="200" fill="#CE1126"/>
-                        </svg>
-                    </div>
-                    <div class="flag">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600">
-                            <rect width="900" height="600" fill="#0038A8"/>
-                            <circle cx="225" cy="300" r="150" fill="#FFF"/>
-                            <path fill="#CE1126" d="M225 150l45.82 141.29h148.65l-120.23 87.42 45.82 141.29L225 432.58 104.93 520l45.82-141.29L30.53 291.29h148.65z"/>
-                        </svg>
-                    </div>
-                    <div class="flag">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 560">
-                            <rect width="980" height="560" fill="#006847"/>
-                            <rect width="980" height="373.33" fill="#FFF"/>
-                            <rect width="980" height="186.67" fill="#CE1126"/>
-                        </svg>
-                    </div>
-                </div>
-                
-                <div class="version">
-                    Version 25.11.20.0 © 2011 - 2025 Connect Assistance
-                </div>
+            
+            </div>
+    </div>
+    
+    <div class="footer-fixed">
+        <div class="version">
+            Version 25.11.20.0 © 2011 - 2025 Connect Assistance
+        </div>
+        <div class="flags">
+            <div class="flag">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 55.2 38.4">
+                    <path fill="#B22234" d="M0 0h55.2v38.4H0z"/>
+                    <path d="M0 2.95h55.2m0 5.9H0m0 5.9h55.2m0 5.9H0m0 5.9h55.2m0 5.9H0m0 5.9h55.2" stroke="#FFF" stroke-width="2.95"/>
+                    <path fill="#3C3B6E" d="M0 0h22.08v21.52H0z"/>
+                </svg>
+            </div>
+            <div class="flag">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600">
+                    <rect width="900" height="600" fill="#CE1126"/>
+                    <rect y="200" width="900" height="200" fill="#002B7F"/>
+                    <rect y="400" width="900" height="200" fill="#FFF"/>
+                </svg>
+            </div>
+            <div class="flag">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600">
+                    <rect width="900" height="600" fill="#FCD116"/>
+                    <rect y="300" width="900" height="150" fill="#003893"/>
+                    <rect y="450" width="900" height="150" fill="#CE1126"/>
+                </svg>
+            </div>
+            <div class="flag">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600">
+                    <rect width="900" height="600" fill="#002a8f"/>
+                    <rect y="120" width="900" height="120" fill="#fff"/>
+                    <rect y="360" width="900" height="120" fill="#fff"/>
+                    <path fill="#cf142b" d="M0 0 L450 300 L0 600 Z"/>
+                </svg>
+            </div>
+            <div class="flag">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600">
+                    <rect width="900" height="600" fill="#006847"/>
+                    <rect x="300" width="300" height="600" fill="#fff"/>
+                    <rect x="600" width="300" height="600" fill="#ce1126"/>
+                    <circle cx="450" cy="300" r="120" fill="#000000" opacity="0"/>
+                </svg>
             </div>
         </div>
     </div>
+    
+    <div class="help-float">
+        ?
+    </div>
 
-    <!-- Trap/Warning Page -->
+
     <div class="trap-page" id="trapPage">
         <div class="trap-content">
             <div class="warning-icon">
                 <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Shield outline -->
                     <path d="M100 20 L160 40 L160 80 Q160 140 100 180 Q40 140 40 80 L40 40 Z" 
                           fill="none" stroke="#ef4444" stroke-width="4"/>
-                    <!-- Shield fill with gradient -->
                     <defs>
                         <linearGradient id="shieldGradient" x1="0%" y1="0%" x2="0%" y2="100%">
                             <stop offset="0%" style="stop-color:#ef4444;stop-opacity:0.3" />
@@ -425,10 +511,8 @@
                     </defs>
                     <path d="M100 25 L155 43 L155 80 Q155 135 100 173 Q45 135 45 80 L45 43 Z" 
                           fill="url(#shieldGradient)"/>
-                    <!-- Exclamation mark -->
                     <circle cx="100" cy="140" r="6" fill="#fbbf24"/>
                     <rect x="95" y="70" width="10" height="55" rx="5" fill="#fbbf24"/>
-                    <!-- Phishing hook -->
                     <path d="M100 60 Q120 50 130 70 Q135 85 125 95 L115 105" 
                           fill="none" stroke="#fbbf24" stroke-width="3" stroke-linecap="round"/>
                     <circle cx="115" cy="108" r="4" fill="#fbbf24"/>
@@ -461,7 +545,7 @@
     </div>
 
     <script>
-        // Trap functionality
+        // Funcionalidad de la trampa - Mantenida igual
         document.getElementById('signInBtn').addEventListener('click', function(e) {
             e.preventDefault();
             document.getElementById('trapPage').classList.add('active');
