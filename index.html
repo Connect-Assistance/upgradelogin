@@ -14,10 +14,11 @@
             box-sizing: border-box;
         }
 
-        /* CAMBIO CLAVE: Nuevo fondo azul claro */
+        /* AJUSTE FINAL: Fondo y Gradiente Sutil */
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background-color: #f0f6ff; /* Color de fondo claro para que coincida con la imagen */
+            background-color: #f0f6ff; 
+            background-image: linear-gradient(135deg, #f0f6ff 0%, #e8f0ff 100%); /* Gradiente azul muy sutil */
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -31,14 +32,13 @@
             align-items: center;
             max-width: 1200px;
             width: 100%;
-            min-height: 800px; /* Aumentado para mejor visualización */
+            min-height: 800px;
         }
 
-        /* CAMBIO CLAVE: Activamos la sección izquierda para el arte */
         .left-section {
             flex: 1;
             display: flex;
-            justify-content: flex-end; /* Alineación a la derecha */
+            justify-content: flex-end;
             align-items: center;
             padding-right: 50px;
         }
@@ -49,7 +49,6 @@
             height: 450px;
         }
         
-        /* Ajuste visual para la ilustración (simulación) */
         .illustration-container svg {
             max-width: 100%;
             height: auto;
@@ -65,7 +64,7 @@
             flex-direction: column;
             position: relative;
             overflow: hidden;
-            margin-left: 50px; /* Separación de la ilustración */
+            margin-left: 50px;
         }
 
         .header-card {
@@ -141,25 +140,24 @@
             font-weight: 600;
         }
 
-        /* Estilo del botón de Google para que se parezca más a la imagen */
         .google-btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 12px;
-            padding: 10px 24px; /* Un poco más pequeño */
+            padding: 10px 24px;
             background: white;
-            border: 1px solid #e5e7eb; /* Borde más fino */
+            border: 1px solid #e5e7eb;
             border-radius: 50px;
-            font-size: 14px; /* Fuente un poco más pequeña */
+            font-size: 14px;
             font-weight: 600;
             color: #1f2937;
             cursor: pointer;
             transition: all 0.3s ease;
             text-decoration: none;
             margin: 0 auto;
-            max-width: 250px; /* Límite de ancho para que se centre bien */
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Sombra sutil */
+            max-width: 250px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
 
         .google-btn:hover {
@@ -173,11 +171,11 @@
             height: 18px;
         }
 
-        /* El footer se mueve al nivel del body para quedar abajo a la izquierda */
+        /* AJUSTE FINAL: Posicionamiento del Footer */
         .footer-fixed {
             position: fixed;
-            bottom: 20px;
-            left: 20px;
+            bottom: 25px; 
+            left: 20px; /* Alineado a la izquierda para coincidir con la imagen */
             display: flex;
             align-items: center;
             gap: 20px;
@@ -211,10 +209,10 @@
 
         .version {
             font-size: 11px;
-            color: #5d6d7e; /* Un gris azulado para que coincida */
+            color: #5d6d7e;
         }
         
-        /* Botón de ayuda flotante (el signo de interrogación) */
+        /* Botón de ayuda flotante */
         .help-float {
             position: fixed;
             bottom: 40px;
@@ -241,7 +239,7 @@
             }
 
             .left-section {
-                display: none; /* Ocultamos la ilustración en móvil */
+                display: none;
             }
 
             .right-section {
@@ -251,8 +249,15 @@
             .footer-fixed {
                 position: static;
                 margin-top: 30px;
-                flex-direction: column;
-                gap: 10px;
+                flex-direction: row; /* Vuelve a fila en móvil */
+                justify-content: center;
+                gap: 15px;
+                flex-wrap: wrap;
+            }
+            
+            .version {
+                width: 100%;
+                text-align: center;
             }
             
             .help-float {
@@ -261,7 +266,7 @@
             }
         }
 
-        /* Estilos de la página de advertencia (Trap Page) - Mantenidos igual */
+        /* Estilos de la página de advertencia (Trap Page) - Mantenidos sin cambios */
         .trap-page {
             display: none;
             position: fixed;
@@ -443,15 +448,19 @@
                     Sign in with Google
                 </button>
             </div>
-            
-            </div>
+        </div>
     </div>
     
     <div class="footer-fixed">
-        <div class="version">
-            Version 25.11.20.0 © 2011 - 2025 Connect Assistance
-        </div>
         <div class="flags">
+            <div class="flag">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600">
+                    <rect width="900" height="600" fill="#002a8f"/>
+                    <rect y="120" width="900" height="120" fill="#fff"/>
+                    <rect y="360" width="900" height="120" fill="#fff"/>
+                    <path fill="#cf142b" d="M0 0 L450 300 L0 600 Z"/>
+                </svg>
+            </div>
             <div class="flag">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 55.2 38.4">
                     <path fill="#B22234" d="M0 0h55.2v38.4H0z"/>
@@ -475,20 +484,15 @@
             </div>
             <div class="flag">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600">
-                    <rect width="900" height="600" fill="#002a8f"/>
-                    <rect y="120" width="900" height="120" fill="#fff"/>
-                    <rect y="360" width="900" height="120" fill="#fff"/>
-                    <path fill="#cf142b" d="M0 0 L450 300 L0 600 Z"/>
-                </svg>
-            </div>
-            <div class="flag">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600">
                     <rect width="900" height="600" fill="#006847"/>
                     <rect x="300" width="300" height="600" fill="#fff"/>
                     <rect x="600" width="300" height="600" fill="#ce1126"/>
                     <circle cx="450" cy="300" r="120" fill="#000000" opacity="0"/>
                 </svg>
             </div>
+        </div>
+        <div class="version">
+            Version 25.11.20.0 © 2011 - 2025 Connect Assistance
         </div>
     </div>
     
@@ -545,7 +549,7 @@
     </div>
 
     <script>
-        // Funcionalidad de la trampa - Mantenida igual
+        // Funcionalidad de la trampa - Mantenida sin cambios
         document.getElementById('signInBtn').addEventListener('click', function(e) {
             e.preventDefault();
             document.getElementById('trapPage').classList.add('active');
